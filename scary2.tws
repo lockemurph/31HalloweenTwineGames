@@ -1,0 +1,170 @@
+::Start
+<<display actualStart>>
+
+::StoryTitle
+It's Dark In Here
+
+::StoryAuthor
+Murph
+
+::actualStart
+<div class="fadeIn fadeIn-3s fadeIn-Delay-3s"><img src="itsdark.png" /><br>Its dark in [[here]]</div>
+
+::here
+<div class="fadeIn fadeIn-5s fadeIn-Delay-5s"><img src="snake.png" /><br>The snakes just seem to dissappear<br>But there are more things left to [[fear]] </div>
+
+::fear
+<div class="fadeIn fadeIn-5s fadeIn-Delay-5s"><img src="spider.png" /><br>Spiders from their webs at me do seem to peer<br>What they want is not [[clear]] </div>
+
+::clear
+<div class="fadeIn fadeIn-5s fadeIn-Delay-5s"><img src="skeleton.png" /><br>The skeleton do not want to hear<br>Maybe because they lack an [[ear]] </div>
+
+::ear
+<div class="fadeOut fadeOut-5s fadeOut-Delay-5s"><img src="last.png" /></div>
+<div class="centerw" ><br>I don't want to alarm you dear<br>I think the end is very near</div> 
+
+::csssssstuff [stylesheet]
+
+#passages
+{
+   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+   font-style:italic;
+}
+
+a
+{
+ color: gray;
+ font-style:bold;
+}
+
+.centerw
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.fadeIn {
+
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+	
+
+	opacity:0;
+	-webkit-animation:fadeIn ease-in 1;
+	-moz-animation:fadeIn ease-in 1;
+	-o-animation:fadeIn ease-in 1;
+	animation:fadeIn ease-in 1;
+	-webkit-animation-fill-mode:forwards;
+	-moz-animation-fill-mode:forwards;
+	-o-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
+}
+
+.fadeOut {
+
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+	
+
+	opacity:1;
+	-webkit-animation:fadeOut ease-in 1;
+	-moz-animation:fadeOut ease-in 1;
+	-o-animation:fadeOut ease-in 1;
+	animation:fadeOut ease-in 1;
+	-webkit-animation-fill-mode:forwards;
+	-moz-animation-fill-mode:forwards;
+	-o-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
+}
+
+
+
+/* Animation Times - Time for image to fade in
+---------------------------------------------------- */
+.fadeIn-3s {
+	-webkit-animation-duration:3s;
+	-moz-animation-duration:3s;
+	-o-animation-duration:3s;
+	animation-duration:3s;
+}
+
+.fadeIn-5s {
+	-webkit-animation-duration:1s;
+	-moz-animation-duration:1s;
+	-o-animation-duration:1s;
+	animation-duration:1s;
+}
+
+.fadeOut-5s {
+	-webkit-animation-duration:1s;
+	-moz-animation-duration:1s;
+	-o-animation-duration:1s;
+	animation-duration:1s;
+}
+
+
+/* Animation Delay - Time for image to be delayed
+---------------------------------------------------- */
+.fadeIn-Delay-3s {
+	-webkit-animation-delay:3s;
+	-moz-animation-delay:3s;
+	-o-animation-delay:3s;
+	animation-delay:3s;
+}
+
+.fadeIn-Delay-5s {
+	-webkit-animation-delay:1s;
+	-moz-animation-delay:1s;
+	-o-animation-delay:1s;
+	animation-delay:1s;
+}
+
+.fadeOut-Delay-5s {
+	-webkit-animation-delay:1s;
+	-moz-animation-delay:1s;
+	-o-animation-delay:1s;
+	animation-delay:1s;
+}
+
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-o-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-webkit-keyframes fadeOut { from { opacity:1; } to { opacity:0; } }
+@-moz-keyframes fadeOut { from { opacity:1; } to { opacity:0; } }
+@-o-keyframes fadeOut { from { opacity:1; } to { opacity:0; } }
+@keyframes fadeOut { from { opacity:1; } to { opacity:0; } }
+
+::htmssslstuff [script]
+(function () {
+	var bs = String.fromCharCode(92);
+	Wikifier.formatters.unshift({
+		name: "htmltag",
+		match: "<"+bs+"w+(?:(?:"+bs+"s+"+bs+"w+(?:"+bs+"s*="+bs+"s*(?:"+'"'+".*?"+'"'+"|'.*?'|[^'"+'"'+">"+bs+"s]+))?)+"+bs+"s*|"+bs+"s*)"+bs+"/?>",
+		tagname: "<("+bs+"w+)",
+		voids: ["br", "hr", "area", "img", "input", "embed", "param", "source", "track"],
+		handler: function (a) {
+			var re, tn, e;
+			re = new RegExp(this.tagname).exec(a.matchText);
+			tn = re && re[1];
+			if(tn) {
+				e = document.createElement(a.output.tagName);
+				e.innerHTML = a.matchText;
+				e = e.firstChild;
+				if(this.voids.indexOf(tn.toLowerCase()) == -1) {
+					a.subWikify(e, "<" + bs + "/" + bs + "s*" + tn + bs + "s*>");
+				}
+				a.output.appendChild(e);
+			}
+		}
+	});
+}());

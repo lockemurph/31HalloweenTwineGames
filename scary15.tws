@@ -1,0 +1,128 @@
+::Start
+<<display actualStart>>
+
+::StoryTitle
+Halloween Quiz
+
+::StoryAuthor
+Murph
+
+::actualStart
+This is a personality quiz.  Please be honest.
+
+[[Question Zero]]
+
+::Question Zero
+What food do you like the most?
+
+[[Steak]]
+[[Eggs]]
+[[Pie|Question One]]
+[[Children]]
+
+::Steak
+Thats made of meat
+
+[[yes|truth]]
+[[no|lie]]
+
+::truth 
+It's good to be honest
+[img[dude.png]]
+
+::lie
+[img[fire.png]]
+
+::Eggs
+CHICKEN
+
+[[Buck Buck]]
+
+::Buck Buck
+[img[chicken.png]]
+
+::Children
+Do you mean things that have parents?  Like birds and sheep, as oppossed to ameba and starfish?
+
+[[I changed my mind Starfish]]
+[[Birds and Sheep]]
+
+::Birds and Sheep
+[img[birdsheep.png]]
+
+
+::I changed my mind Starfish
+How do you prepare Starfish?
+
+[[Fried]]
+[[Boiled]]
+
+::Fried
+Starfish have a hard shell.  Do you have large teeth or an orifice other than a mouth to eat
+
+[[Mouth]]
+[[Other thing]]
+
+::Mouth
+[img[rawr.png]]
+
+::Other thing
+[img[cthulu.png]]
+
+
+::Boiled
+This is a very Asian preparation.  Are you Asian in nature?
+
+[[Yes|Asia]]
+[[No America|Question One]]
+[[No Antartica|Antartica]]
+
+::Antartica
+[img[thething.png]]
+
+::Asia
+Turtle or Raven
+
+[[Turtle]]
+[[Raven]]
+
+::Turtle
+[img[kappa.png]]
+Hope you have imp armor
+
+
+::Raven
+[img[tengu.png]]
+
+::Question One
+What do you like more?
+
+[[Scaring people]]
+[[Drinking peoples blood]]
+[[Biting people]]
+[[Setting people on fire]]
+
+::Scaring people
+<<set $one = 1>>
+<<display Yes>>
+::Drinking peoples blood
+<<set $one = 2>>
+<<display Yes>>
+::Biting people
+<<set $one = 3>>
+<<display Yes>>
+::Setting people on fire
+<<set $one = 4>>
+<<display Yes>>
+
+::Question two
+Don't you feel bad about that?  Hurting people is immoral.
+
+[[Yes]]
+[[No]]
+
+::No
+You truely are a monster.  I'm not comfortable continuing this quiz.
+
+::Yes
+[img[merma.png]]

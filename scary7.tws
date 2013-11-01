@@ -1,0 +1,42 @@
+::Start
+<<display actualStart>>
+
+::StoryTitle
+You Are Going To Get Caught
+
+::StoryAuthor
+Murph
+
+::actualStart
+<<print $escapes>>
+<<if $escapes eq "A">>
+<<remember $escapes = "B">>
+DEBUG <<print $escapes>>
+<<else>>
+<<display init>>
+<<endif>>
+
+You wake up.
+
+You grasp roots and dry leaves.
+
+[[Look Around|node1]]
+
+::init
+<<remember $escapes = "A">>
+
+
+::node1
+Wait.  There's something coming at you.  Fast.  You feel panic run over you!
+
+<<remember $escapes = $escapes + 1>>
+<<print $escapes>>
+
+<<choice "left" "Run towards the moon" >>
+<<choice "right" "Run away from the moon" >>
+
+::left
+left
+
+::right
+right

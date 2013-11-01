@@ -1,0 +1,52 @@
+::Start
+<<display actualStart>>
+
+::StoryTitle
+A Drunk Story
+
+::StoryAuthor
+Murph
+
+::actualStart
+Once there was a [[man]]
+
+::man
+He was in his house [[alone]]
+
+::alone
+But then there was a knock on the [[door]]
+
+::door
+Did he open the door?
+<<choice "No">>
+<<choice "Yes>>
+
+::No
+That was the safest [[option]]
+
+::option
+[img[ghost.png]]
+Too bad when he turned around there was a [[ghost]]!!!
+
+::ghost
+OooooooOOOooooooOOOO said the ghost.  The man was very [[scared]]
+
+::scared
+So he pooped.
+
+THE END
+
+[img[poop.png]]
+
+::Yes
+[img[skel.png]]
+On the other side of the door was a [[skeleton]]!!!
+
+::skeleton
+"Ahhhhh!" said the man "This is [[horrific]]!!!"
+
+::horrific
+The man was so scared he ran into the [[bathroom]].
+
+::bathroom
+He was in the bathroom a long time, and he got [[scared]]

@@ -1,0 +1,101 @@
+::Start
+<<display actualStart>>
+
+::StoryTitle
+Spooky Fortune
+
+::StoryAuthor
+Murph
+
+
+::actualStart
+<<set $imgCnt = 0>>\
+<<set $card1 = Math.floor(Math.random()*22) + ".jpg" >>\
+<<set $card2 = Math.floor(Math.random()*22) + ".jpg" >>\
+<<set $card3 = Math.floor(Math.random()*22) + ".jpg" >>\
+<<set $images = [$card1, $card2, $card3]>>\
+<<set $fortunes = ["A ghost will perform standup for you!!!", "A werewolf will sell you insurance", "Vampires will look at you funny", "A Frankenstein Monster will make you pancakes", "The creature from the black lagoon will eat your sandwhich", "A zombie will gossip really bad about you", "A demon will serve you in Applebees", "A skeleton will pee next to you in the bathroom", "Share a drink with a salaad", "A gargoyl will fart near you", "A slime blob will leer at your wife", "A cerebus will ask you out on a date", "A robot will encourage you on your job", "An ilithid will sell you shoes", "A moleman will offer you a drink", "A mad genius will build you a shed", "A pagan god will mow your lawn", "A mutant will deliver a pizza", "A two headed shark buy something from you on Craigslist", "A kraken will invite you to a party", "A poltergeist will try and sell you knives", "A black knight will accidently call you", "A merman will be your interior decorator", "A dinosaur will sell you a hot dog", "You will cause a mummy to get fired", "Flesh eating beetles will sit next to you on the bus", "You will read a really good book written by a yeti", "A dragon will compliment your hat", "The boogie man will give you a motivational speech", "Bloody Mary will polish your silverware", "The Stay Puff Marshmellow Man will jump your car", "Chucky will say hello", "Freddy will bump you in the hall", "Jason will hand you a brochure", "You will share a cab with a kappa", "Tengus will go on a pinic with you"]>>\
+<<set $f = Math.floor(Math.random()*$fortunes.length)>>\
+<<display cards>>
+<div class="vvv">
+<<print $fortunes[$f]>>
+</div>
+
+::cards
+<<if $imgCnt < $images.length>>\
+<<set $i = "[img[">>\
+<<set $i = $i + $images[$imgCnt]>>\
+<<set $i = $i + "]]">>\
+<<print $i>>\
+<<print "   " >>\
+<<set $imgCnt = $imgCnt + 1>>\
+<<display cards>>
+<<endif>>
+
+::breaking [script]
+(function(){
+var bs = String.fromCharCode(92);
+Wikifier.formatters.unshift({
+    name: "continuedLine",
+    match: bs+bs+"s",
+    handler: function(a) {
+        a.nextMatch = a.matchStart+3;
+    }
+});
+}());
+
+::ifandelse
+version.extensions.ifMacros={major:2,minor:0,revision:0};macros["if"]={handler:function(place,macroName,params,parser){
+var conditions=[],clauses=[],srcOffset=parser.source.indexOf(">>",parser.matchStart)+2,src=parser.source.slice(srcOffset),endPos=-1,currentCond=parser.fullArgs(),currentClause="",t=0,nesting=0;
+for(var i=0;i<src.length;i++){if(src.substr(i,9)=="<<endif>>"){nesting--;if(nesting<0){endPos=srcOffset+i+9;
+conditions.push(currentCond);clauses.push(currentClause);break;}}if((src.substr(i,6)=="<<else")&&nesting==0){conditions.push(currentCond);
+clauses.push(currentClause);currentClause="";t=src.indexOf(">>",i+6);if(src.substr(i+6,4)==" if "){currentCond=Wikifier.parse(src.slice(i+10,t));
+}else{currentCond="true";}i=t+2;}if(src.substr(i,5)=="<<if "){nesting++;}currentClause+=src.charAt(i);
+}try{if(endPos!=-1){parser.nextMatch=endPos;for(i=0;i<clauses.length;i++){if(eval(conditions.shift())){new Wikifier(place,clauses[i ].trim());
+break;}}}else{throwError(place,"can't find matching endif");}}catch(e){throwError(place,"bad condition: "+e.message);
+}}};
+
+::usehtmlstuff [script]
+(function () {
+	var bs = String.fromCharCode(92);
+	Wikifier.formatters.unshift({
+		name: "htmltag",
+		match: "<"+bs+"w+(?:(?:"+bs+"s+"+bs+"w+(?:"+bs+"s*="+bs+"s*(?:"+'"'+".*?"+'"'+"|'.*?'|[^'"+'"'+">"+bs+"s]+))?)+"+bs+"s*|"+bs+"s*)"+bs+"/?>",
+		tagname: "<("+bs+"w+)",
+		voids: ["br", "hr", "area", "img", "input", "embed", "param", "source", "track"],
+		handler: function (a) {
+			var re, tn, e;
+			re = new RegExp(this.tagname).exec(a.matchText);
+			tn = re && re[1];
+			if(tn) {
+				e = document.createElement(a.output.tagName);
+				e.innerHTML = a.matchText;
+				e = e.firstChild;
+				if(this.voids.indexOf(tn.toLowerCase()) == -1) {
+					a.subWikify(e, "<" + bs + "/" + bs + "s*" + tn + bs + "s*>");
+				}
+				a.output.appendChild(e);
+			}
+		}
+	});
+}());
+
+
+::stylesfortarot [stylesheet]
+img
+{
+   width:300px;
+   height:525px;
+   align="middle";
+}
+
+
+
+.vvv
+{
+   font-family: Consolas, monaco, monospace;
+   font-style:italic;
+   font-size:40px;
+   text-align: center;
+   
+}

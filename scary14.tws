@@ -1,0 +1,303 @@
+::Start
+<<display actualStart>>
+
+::StoryTitle
+Spooky Casino
+
+::StoryAuthor
+Murph
+
+::actualStart
+You are a blackjack dealer in the high end Monster Casino!!  Currently, no mortal has successfully completed a shift... alive.
+
+[[Start your shift... if you dare|At the Table]]
+<<display initDeck>>
+
+::At the Table
+At your table is the Ghost, a wolfman, and a vampire.  You'd better deal correctly or they probably will kill you.
+<<set $correct = 1>>\
+<<display actions>>
+
+
+::actions
+[[Give the Ghost a Card]]
+[[Give the Wolfman a Card]]
+[[Give the Vampire a Card]]
+[[Give yourself a card faceup]]
+[[Give yourself a card facedown]]
+[[Ask the Ghost what he wants]]
+<<display debug>>
+
+::Give the Ghost a Card
+<<if $correct eq 1>>\
+<<set $correct = 2>>\
+You give the ghost a <<print $deck[0]>>
+<<set $ghostHand.push($deck[0]);$deck.shift()>>\
+<<display actions>>\
+<<else>>\
+"Wooooooooooooooooooooooooooo" says the ghost "You screwed up the game!!!!!!".  Then he possess you a makes you hit yourself to death.
+THE END
+<<endif>>\
+
+::Give the Wolfman a Card
+<<if $correct eq 2>>\
+<<set $correct = 3>>\
+You give the werewolf a <<print $deck[0]>>
+<<set $werewolfHand.push($deck[0]); $deck.shift()>>\
+<<display actions>>\
+<<else>>\
+"Howl!" says the werewolf "You screwed up the game!!!!!!".  He bites you, turning you into a werewolf.  The silver ring on your finger poisons you, so you die.
+THE END
+<<endif>>\
+
+::Give the Vampire a Card
+<<if $correct eq 3>>\
+<<if $vampireHand.length eq 1>>\
+<<set $correct = 5>>\
+<<else>>
+<<set $correct = 4>>\
+<<endif>>\
+You give the vampire a <<print $deck[0]>>
+<<set $vampireHand.push($deck[0]); $deck.shift()>>\
+<<display actions>>\
+<<else>>\
+"Blah!!" says the vampire "You screwed up the game!!!!!!".  He calls upon his bats, which are guys with baseball bats.  Wait, this guy isn't a vampire at all.  It doesn't matter though, because you are hit with a lot of bats, to death.
+THE END
+<<endif>>\
+
+::Give yourself a card facedown
+<<if $correct eq 4>>\
+<<set $correct = 1>>\
+You give the yourself a <<print $deck[0]>> facedown.
+<<set $dealerHand.push($deck[0]); $deck.shift()>>\
+<<display actions>>\
+<<else>>\
+"You screwed up the game!!!!!!" say the monsters. They kill you.
+THE END
+<<endif>>\
+
+::Give yourself a card faceup
+<<if $correct eq 5>>\
+<<set $correct = 6>>\
+You give the yourself a <<print $deck[0]>> faceup.
+<<set $dealerHand.push($deck[0]); $deck.shift()>>\
+<<display actions>>\
+<<else>>\
+"You screwed up the game!!!!!!" say the monsters. They kill you.
+THE END
+<<endif>>\
+
+::Ask the Ghost what he wants
+<<if $correct eq 6>>
+
+You ask the ghost what he wants.  
+
+"I never takes a hit" says the ghost.
+
+[[Now ask the Vampire what he wants]]
+[[Ask the Werewolf what he wants]]
+
+<<else>>
+"Do you know what happens if you ask a ghost something at the wrong time?"  says the ghost "I'm gonna turn you into a ghost!!" and he does.  You die  
+
+THE END
+
+
+<<endif>>
+
+<<display debug>>
+
+::Ask the Werewolf what he wants
+"I'm a wolf!!!! Hit me!!!" screams the wolf
+
+[[Give him a card]]
+[[Hit the werewolf|badwerewolf]]
+<<display debug>>
+
+
+::Give him a card
+You give the werewolf a <<print $deck[0]>>
+<<set $werewolfHand.push($deck[0]);$deck.shift()>>\
+
+"THATS SOME CARDS" says the werewolf "I stay!"
+
+[[Ask that Vampire]]
+[[Give the werewolf another card|badwerewolf]]
+<<display debug>>
+
+::badwerewolf
+"AHSDJLFKJDKLFSKLDGJD:LKFDKLFJSD:FJ:DK:LFDSJKLAHHSKJD" howls the werewolf, "I'M GONNA EAT YOUR FACE" and he does.
+
+THE END
+<<display debug>>
+
+
+::Ask that Vampire
+You go to ask the vampire what he wants, but your supervisor comes up to you.  It turns out it wasn't actually a vampire, but a man holding a gun and a sign that says vampire.  It's the end of your shift anyway, so time to go home.
+
+Congrats!!! You are the first survivor of Spooky Casino!!!
+<<display debug>>
+
+
+::Now ask the Vampire what he wants
+"Bleh!" says the Vampire as he shoots you with a gun.
+The END
+<<display debug>>
+
+
+::ghostTotalOP
+<<if $ghostHand.length gte 1 and $ghostHand.length gt $cnt>>\
+   <<set $gg = $ghostHand[$cnt]; $ggg = $gg.split(" "); $value = $ggg[0]>>\
+   <<if $value eq "Ace">>\
+      <<set $ghostTotal = $ghostTotal + 11>>\
+   <<else if $value eq "King" or $value eq "Queen" or $value eq "Jack">>\
+      <<set $ghostTotal = $ghostTotal + 10>>\
+   <<else>>\
+      <<set $ghostTotal = parseInt($value) + $ghostTotal>>\
+   <<endif>>\
+   <<set $cnt = $cnt + 1>>\
+   <<display ghostTotalOP>>\
+<<endif>>\
+<<set $cnt = 0>>\
+
+
+::werewolfTotalOP
+<<if $werewolfHand.length gte 1 and $werewolfHand.length gt $cnt>>\
+   <<set $ff = $werewolfHand[$cnt]; $fff = $ff.split(" "); $value = $fff[0]>>\
+   <<if $value eq "Ace">>\
+      <<set $werewolfTotal = $werewolfTotal + 11>>\
+   <<else if $value eq "King" or $value eq "Queen" or $value eq "Jack">>\
+      <<set $werewolfTotal = $werewolfTotal + 10>>\
+   <<else>>\
+      <<set $werewolfTotal = parseInt($value) + $werewolfTotal>>\
+   <<endif>>\
+   <<set $cnt = $cnt + 1>>\
+   <<display werewolfTotalOP>>\
+<<endif>>\
+<<set $cnt = 0>>\
+
+
+::vampireTotalOP
+<<if $vampireHand.length gte 1 and $vampireHand.length gt $cnt>>\
+   <<set $dd = $vampireHand[$cnt]; $ddd = $dd.split(" "); $value = $ddd[0]>>\
+   <<if $value eq "Ace">>\
+      <<set $vampireTotal = $vampireTotal + 11>>\
+   <<else if $value eq "King" or $value eq "Queen" or $value eq "Jack">>\
+      <<set $vampireTotal = $vampireTotal + 10>>\
+   <<else>>\
+      <<set $vampireTotal = parseInt($value) + $vampireTotal>>\
+   <<endif>>\
+   <<set $cnt = $cnt + 1>>\
+   <<display vampireTotalOP>>\
+<<endif>>\
+<<set $cnt = 0>>\
+
+::dealerTotalOP
+<<if $dealerHand.length gte 1 and $dealerHand.length gt $cnt>>\
+   <<set $ss = $dealerHand[$cnt]; $sss = $ss.split(" "); $value = $sss[0]>>\
+   <<if $value eq "Ace">>\
+      <<set $dealerTotal = $dealerTotal + 11>>\
+   <<else if $value eq "King" or $value eq "Queen" or $value eq "Jack">>\
+      <<set $dealerTotal = $dealerTotal + 10>>\
+   <<else>>\
+      <<set $dealerTotal = parseInt($value) + $dealerTotal>>\
+   <<endif>>\
+   <<set $cnt = $cnt + 1>>\
+   <<display dealerTotalOP>>\
+<<endif>>\
+<<set $cnt = 0>>\
+
+
+
+::Reveal your cards
+You reveal your cards!
+
+::debug
+DECK
+   <<set $dealerTotal = 0>>\
+   <<set $cnt = 0>>\
+   <<display dealerTotalOP>>\
+   Dealer  <<print $dealerHand>>
+   Total <<print $dealerTotal>>
+   
+   <<set $ghostTotal = 0>>\
+   <<set $cnt = 0>>\
+<<display ghostTotalOP>>\
+Ghost <<print $ghostHand>>
+Total: <<print $ghostTotal>>
+   <<set $werewolfTotal = 0>>\
+   <<set $cnt = 0>>\
+<<display werewolfTotalOP>>\
+Werewolf <<print $werewolfHand>>
+Total: <<print $werewolfTotal>>
+   <<set $vampireTotal = 0>>\
+   <<set $cnt = 0>>\
+   <<display vampireTotalOP>>
+Vampire <<print $vampireHand>>
+Total: <<print $vampireTotal>>
+
+
+::initDeck
+<<set $deck = []>>\
+<<set $deckInOrder = []>>\
+<<set $num = 1; $ghostTotal = 0; $werewolfTotal = 0; $vampireTotal = 1;>>\
+<<display createInOrderDeck>>
+<<display shuffleDeck>>
+<<set $ghostHand = []; $werewolfHand = []; $vampireHand = []; $dealerHand = []>>
+
+
+::createInOrderDeck
+<<set $suitName = "none"; $numName = "none";>>\
+<<if $num eq 13>>\
+<<set $numName = "King">>\
+<<else if $num eq 12>>\
+<<set $numName = "Queen">>\
+<<else if $num eq 11>>\
+<<set $numName = "Jack">>\
+<<else if $num eq 1>>\
+<<set $numName = "Ace">>\
+<<else>>\
+<<set $numName = $num>>\
+<<endif>>\
+<<set $deckInOrder.push($numName + " of Hearts"); $deckInOrder.push($numName + " of Diamonds"); $deckInOrder.push($numName + " of Clubs"); $deckInOrder.push($numName + " of Spades");>>\
+<<if $num neq 13>>\
+<<set $num = $num + 1>>\
+<<display createInOrderDeck>>\
+<<endif>>\
+
+::shuffleDeck
+<<set $i = Math.floor(Math.random()*$deckInOrder.length)>> \ 
+<<set $deck.push($deckInOrder[$i])>> \
+<<set $deckInOrder.splice($deckInOrder.indexOf($deckInOrder[$i]),1)>> \
+<<set $size = $deck.length >> \
+<<if $size neq 52>> \
+<<display shuffleDeck>> \
+<<endif>> \
+
+
+
+
+
+::elseiff [script]
+version.extensions.ifMacros={major:2,minor:0,revision:0};macros["if"]={handler:function(place,macroName,params,parser){
+var conditions=[],clauses=[],srcOffset=parser.source.indexOf(">>",parser.matchStart)+2,src=parser.source.slice(srcOffset),endPos=-1,currentCond=parser.fullArgs(),currentClause="",t=0,nesting=0;
+for(var i=0;i<src.length;i++){if(src.substr(i,9)=="<<endif>>"){nesting--;if(nesting<0){endPos=srcOffset+i+9;
+conditions.push(currentCond);clauses.push(currentClause);break;}}if((src.substr(i,6)=="<<else")&&nesting==0){conditions.push(currentCond);
+clauses.push(currentClause);currentClause="";t=src.indexOf(">>",i+6);if(src.substr(i+6,4)==" if "){currentCond=Wikifier.parse(src.slice(i+10,t));
+}else{currentCond="true";}i=t+2;}if(src.substr(i,5)=="<<if "){nesting++;}currentClause+=src.charAt(i);
+}try{if(endPos!=-1){parser.nextMatch=endPos;for(i=0;i<clauses.length;i++){if(eval(conditions.shift())){new Wikifier(place,clauses[i ].trim());
+break;}}}else{throwError(place,"can't find matching endif");}}catch(e){throwError(place,"bad condition: "+e.message);
+}}};
+
+
+::breakthatline [script]
+(function(){
+var bs = String.fromCharCode(92);
+Wikifier.formatters.unshift({
+    name: "continuedLine",
+    match: bs+bs+"s",
+    handler: function(a) {
+        a.nextMatch = a.matchStart+3;
+    }
+});
+}());

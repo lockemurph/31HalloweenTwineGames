@@ -1,0 +1,194 @@
+::Start
+<<display actualStart>>
+
+::StoryTitle
+Red Eye
+
+
+::StoryAuthor
+Murph
+[[credits]]
+
+::credits
+Fire Effect
+http://line25.com/articles/using-css-text-shadow-to-create-cool-text-effects
+
+::actualStart
+When I was at summer camp, we'd hike, make crafts, and play dodgeball.  Every night, without fail, we'd gather around a bonfire.  After we'd sing the camp song, we always did a [[rollcall.]]
+
+::rollcall.
+It was a little game, with each cabin named after an animal.  I was in [[Moose cabin]].
+
+::Moose cabin
+One of the kids in Moose cabin was named Eric.  Eric had been at the camp a few years, while this was my first year.  Eric knew how to get in the lunchroom first, the best balls for dodgeball, where all cool, hidden, creeks filled with [[crawdads]].
+
+::crawdads
+Eric also knew the about the hidden grave, far far far back in the [[woods]].
+
+::woods
+The grave was a single tombstone, with moss and carving so worn it could not be read.  But Eric knew the story, told to him by a boy who used to come to camp, but was now too [[old]].
+
+::old
+Eric passed the [[secret]] to me
+
+::secret
+There once was an old man, who fished in the hidden creeks around the camp.  He was rude and ornery, as old men tend to be.  No one [[liked]] him.
+
+::liked
+The old man fished because he was an old man and that was what old men did.  But one day something went [[wrong]].
+
+::wrong
+The hook flew back and landed in his [[eye]].
+
+::eye
+The old man needed help, but he was rude and ornery, no one wanted to help a rude and ornery [[man]].
+
+::man
+The old man spied [[it]].
+
+::it
+<div class="coal">
+[img[coal.png]]
+A red hot [[coal]]
+</div>
+
+::coal
+He ripped out the hook, and without hesitation, plunged the coal into his [[eye|eye2]].
+
+::eye2
+The old man died soon [[after]].
+
+::after
+His [[ghost]] however...
+
+::ghost
+Eric swore if you looked outside at midnight, you'd see the old man, <div style="color:red">Red Eye</div>  His eye burning bright, wandering the [[camp]], seeking vengence.
+
+::camp
+One night, when everyone else was snoring, I went to the [[window]].
+
+::window
+I saw what I thought was a street [[lamp]].
+
+::lamp
+but we were in the [[woods|woods2]].
+
+::woods2
+I ran back to my bed, threw the blanket over my head and closed my eyes [[tight]].
+
+::tight
+After I calmed down a bit, I noticed it was [[warm]].
+
+::warm
+It was actually [[hot]].
+
+::hot
+Like a red hot coal was pressed up against my [[blanket]]
+
+::blanket
+It felt like forever, but eventually light came into the [[cabin]].
+
+::cabin
+No one believed me when I told them.  I didn't go back the the camp the next [[year]]...
+
+::year
+As far as I know Eric didn't tell anyone else, and you are the only one I'm going to [[tell]] about Red Eye.
+
+::tell
+I'm older now, but sometimes at night, I feel a heat right up on my face, and I dare not open my eyes.
+
+
+
+
+
+
+
+::csssssstuff [stylesheet]
+
+.coal
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;
+}
+
+.bob
+{
+background: #f91504; /* Old browsers */
+background: -moz-linear-gradient(top,  #f91504 0%, #8f0222 29%, #000000 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f91504), color-stop(29%,#8f0222), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #f91504 0%,#8f0222 29%,#000000 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #f91504 0%,#8f0222 29%,#000000 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #f91504 0%,#8f0222 29%,#000000 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #f91504 0%,#8f0222 29%,#000000 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f91504', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+font-family:"Impact", Charcoal, sans-serif;
+
+}
+
+.passage
+{
+font-family:"Lucida Console", Monaco, monospace;
+background-color:rgb(58, 41, 41);;
+color:gray;
+border-style:inset;
+border-width:2px;
+font-size:20px;
+padding:10px;
+}
+.title
+{
+visibility:hidden;
+position:fixed;
+top:30px;
+right:5px;
+width:0px;
+hieght:0px;
+font-size:0;
+
+}
+
+body
+{
+background: black;
+font-family:"Lucida Console", Monaco, monospace;
+}
+
+h1
+{
+text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;
+}
+h2
+{
+  font-size: 72px;
+  background: -webkit-linear-gradient(red, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+::htmssslstuff [script]
+(function () {
+	var bs = String.fromCharCode(92);
+	Wikifier.formatters.unshift({
+		name: "htmltag",
+		match: "<"+bs+"w+(?:(?:"+bs+"s+"+bs+"w+(?:"+bs+"s*="+bs+"s*(?:"+'"'+".*?"+'"'+"|'.*?'|[^'"+'"'+">"+bs+"s]+))?)+"+bs+"s*|"+bs+"s*)"+bs+"/?>",
+		tagname: "<("+bs+"w+)",
+		voids: ["br", "hr", "area", "img", "input", "embed", "param", "source", "track"],
+		handler: function (a) {
+			var re, tn, e;
+			re = new RegExp(this.tagname).exec(a.matchText);
+			tn = re && re[1];
+			if(tn) {
+				e = document.createElement(a.output.tagName);
+				e.innerHTML = a.matchText;
+				e = e.firstChild;
+				if(this.voids.indexOf(tn.toLowerCase()) == -1) {
+					a.subWikify(e, "<" + bs + "/" + bs + "s*" + tn + bs + "s*>");
+				}
+				a.output.appendChild(e);
+			}
+		}
+	});
+}());

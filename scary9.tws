@@ -1,0 +1,133 @@
+::Start
+<<display actualStart>>
+
+::StoryTitle
+
+
+::StoryAuthor
+Murph
+
+
+::actualStart
+
+<div class = "one">
+<p>Poor old Kell</p>
+</div>
+<div class = "two">
+<p>Into a well</p>
+</div>
+<div class = "three">
+<p>So long he fell</p>
+</div>
+<div class = "four">
+<p>I think he's in hell</p>
+</div>
+<div class = "eee">
+[img[eee.png]]
+</div>
+<div class="pit">
+[img[pit.png]]
+</div>
+<div class="faller">
+[img[faller.png]]
+</div>
+<div class="hell">
+[img[hell.png]]
+</div>
+
+
+
+::csss [stylesheet]
+
+.eee
+{
+left:585px;
+top:90px;
+position:absolute;
+}
+
+.one
+{
+color: white;
+z-index:2;
+left:785px;
+top:585px;
+position:absolute;
+}
+
+.two
+{
+color: white;
+z-index:2;
+left:285px;
+top:1585px;
+position:absolute;
+}
+.three
+{
+color: white;
+z-index:2;
+left:785px;
+top:2585px;
+position:absolute;
+}
+
+.four
+{
+color:white;
+position:absolute;
+left:585px;
+top:6085px;
+z-index:1;
+}
+
+.faller
+{
+position:fixed;
+left:585px;
+top:230px;
+z-index:-1;
+}
+
+.pit
+{
+position:absolute;
+left:585px;
+top:150px;
+z-index:-2;
+}
+
+.hell
+{
+position:absolute;
+left:540px;
+top:6300px;
+width:640;
+z-index:-23;
+}
+
+
+::thhm [script]
+(function () {
+	var bs = String.fromCharCode(92);
+	Wikifier.formatters.unshift({
+		name: "htmltag",
+		match: "<"+bs+"w+(?:(?:"+bs+"s+"+bs+"w+(?:"+bs+"s*="+bs+"s*(?:"+'"'+".*?"+'"'+"|'.*?'|[^'"+'"'+">"+bs+"s]+))?)+"+bs+"s*|"+bs+"s*)"+bs+"/?>",
+		tagname: "<("+bs+"w+)",
+		voids: ["br", "hr", "area", "img", "input", "embed", "param", "source", "track"],
+		handler: function (a) {
+			var re, tn, e;
+			re = new RegExp(this.tagname).exec(a.matchText);
+			tn = re && re[1];
+			if(tn) {
+				e = document.createElement(a.output.tagName);
+				e.innerHTML = a.matchText;
+				e = e.firstChild;
+				if(this.voids.indexOf(tn.toLowerCase()) == -1) {
+					a.subWikify(e, "<" + bs + "/" + bs + "s*" + tn + bs + "s*>");
+				}
+				a.output.appendChild(e);
+			}
+		}
+	});
+}());

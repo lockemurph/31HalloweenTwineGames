@@ -1,0 +1,380 @@
+::Start
+<<display init>>
+
+
+::StoryTitle
+The Playdough Ghost
+
+::StoryAuthor
+Murph
+
+::init
+Before you begin, be aware this is the scariest possible story.
+
+
+DO YOU WANT TO CONTINUE!?
+[[Y]]/[[N]]
+
+
+::N
+You made the correct choice.  It is super scary beyond this point.
+
+::Y
+PLEASE VERIFY THAT YOU ARE 18.  
+
+EXACTLY.  
+
+PEOPLE YOUNGER THAN 18 ARE NOT MENTALLY EQUIPPED FOR THE HORROR THAT LIES BEYOND THIS PAGE.
+PEOPLE WHO ARE OLDER THAN 18 CAN NOT STAND THE STRAIN AND WILL PROBABLY DIE OF SCARYNESS
+
+
+[[I AGREE I AM EXACTLY 18]]
+[[PHEW DODGED A BULLET|N]]
+
+
+::I AGREE I AM EXACTLY 18
+Last chance to bail before I drop the story of
+
+
+
+
+
+<div class="titlee">THE PLAYDOUGH GHOST</div>
+
+
+
+
+
+
+
+[[A story so scary even the text is haunted]].
+
+::A story so scary even the text is haunted
+One day, much like this one, there was a kid who was in his kindergarden [[class]].
+
+::class
+It was arts and crafts [[day]].
+
+::day
+Ok I know I said that the last chance to bail out was before, but really this is last chance to [[stop|N]]!.
+
+Otherwise, lets [[continue]].
+
+
+::continue
+Some kid made an ashtray.  Another kid made an elephant.  One kid made a rock.  The subject of our tale [[however]]
+
+::however
+Made 
+
+<div class="titlee">A PLAYDOUGH GHOST</div>
+
+
+
+
+The kid looked at his [[creation]].
+
+
+::creation
+
+and he <div class="barf">[[BARFFFFFFED]]</div>
+
+
+::BARFFFFFFED
+The teacher, of course sent him home, with his art [[project]].
+
+::project
+The kid was a latch key kid, so he hung his creation in the hallway, and then went to [[bed]].
+
+::bed
+
+His mom came home some time later.  She didn't notice the 
+
+
+
+
+
+<div class="titlee">THE PLAYDOUGH GHOST</div>
+
+
+
+
+
+
+untile she was already in the [[house]].
+
+::house
+As soon as she saw it though she <div class="barf">[[BARFFFFFED]]</div>
+
+::BARFFFFFED
+In fact, whenever either of them saw the
+
+
+
+
+<div class="titlee">THE PLAYDOUGH GHOST</div>
+
+
+
+
+
+all they could do is <div class="barf">[[BARFFFFFFFED]]</div>
+
+
+::BARFFFFFFFED
+Eventually a wall of barf built up, and since they didn't have another door or windows they starved to death.
+
+
+[[THE END]]
+
+::THE END
+
+Phew!  Glad you made it!
+
+
+::ggg [stylesheet]
+
+.barf
+{
+  font-size: 15px;
+  background: -webkit-linear-gradient(green, brown);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.grave .char { 
+  transition: all 5s; -webkit-transition: all 200s;
+  opacity: 0.0;
+}
+.grave .char:hover {
+  transition: all 0.1s; -webkit-transition: all 0.5s;
+  opacity:1;
+}
+
+.titlee
+{
+   text-align: center; 
+   font-size: 6em;
+}
+
+.titlee .char { 
+  position:relative;
+}
+.titlee .char:nth-child(8n) { 
+  animation: wavetext 4s 0s infinite;
+  -webkit-animation: wavetext 4s 0s infinite;
+}
+.titlee .char:nth-child(8n+1) { 
+  animation: wavetext 4s -0.5s infinite;
+  -webkit-animation: wavetext 4s -0.5s infinite;
+}
+.titlee .char:nth-child(8n+2) { 
+  animation: wavetext 4s -1s infinite;
+  -webkit-animation: wavetext 4s -1s infinite;
+}
+.titlee .char:nth-child(8n+3) { 
+  animation: wavetext 4s -1.5s infinite;
+  -webkit-animation: wavetext 4s -1.5s infinite;
+}
+.titlee .char:nth-child(8n+4) { 
+  animation: wavetext 4s -2s infinite;
+  -webkit-animation: wavetext 4s -2s infinite;
+}
+.titlee .char:nth-child(8n+5) { 
+  animation: wavetext 4s -2.5s infinite;
+  -webkit-animation: wavetext 4s -2.5s infinite;
+}
+.titlee .char:nth-child(8n+6) { 
+  animation: wavetext 4s -3s infinite;
+  -webkit-animation: wavetext 4s -3s infinite;
+}
+.titlee .char:nth-child(8n+7) { 
+  animation: wavetext 4s -3.5s infinite;
+  -webkit-animation: wavetext 4s -3.5s infinite;
+}
+@keyframes wavetext {
+  0%, 100% { top: 0em; } 50% { top: 0.5em; }
+}
+@-webkit-keyframes wavetext {
+  0%, 100% { top: 0em; } 50% { top: 0.5em; }
+}
+
+
+.grave
+{
+   border-style:inset;
+   border-width:7px;
+   padding:10px;
+   border-top-left-radius: 50px 50px;
+   border-top-right-radius: 50px 50px;
+   background: gray;
+   font-size:250%;
+   text-align:center;
+   text-shadow: 1px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
+}
+
+::putcss [script]
+Wikifier.formatters.push({name:"char",match:".",handler:function(a){insertElement(a.output,"span",null,"char "+(a.matchText===" " ? "space" : a.matchText),a.matchText);
+}});Wikifier.formatters.forEach(function(e){if(e.name=="emdash"){e.handler=function(a){var b=insertElement(a.output,"span",null,"char",String.fromCharCode(8212));
+};}else{if(e.name=="prettyLink"){e.handler=function(a){var b=new RegExp(e.lookahead,"mg");
+b.lastIndex=a.matchStart;var c=b.exec(a.source);if(c&&c.index==a.matchStart&&c[2]){var d=Wikifier.createInternalLink(a.output,c[1]);
+setPageElement(d,null,c[1]);a.nextMatch+=c[1].length+2;}else{if(c&&c.index==a.matchStart&&c[3]){var f;
+if(tale.has(c[4])){f=Wikifier.createInternalLink(a.output,c[4]);}else{f=Wikifier.createExternalLink(a.output,c[4]);
+}setPageElement(f,null,c[1]);a.nextMatch=c.index+c[0].length;}}};}}});
+
+
+::htmllll [script]
+(function () {
+	var bs = String.fromCharCode(92);
+	Wikifier.formatters.unshift({
+		name: "htmltag",
+		match: "<"+bs+"w+(?:(?:"+bs+"s+"+bs+"w+(?:"+bs+"s*="+bs+"s*(?:"+'"'+".*?"+'"'+"|'.*?'|[^'"+'"'+">"+bs+"s]+))?)+"+bs+"s*|"+bs+"s*)"+bs+"/?>",
+		tagname: "<("+bs+"w+)",
+		voids: ["br", "hr", "area", "img", "input", "embed", "param", "source", "track"],
+		handler: function (a) {
+			var re, tn, e;
+			re = new RegExp(this.tagname).exec(a.matchText);
+			tn = re && re[1];
+			if(tn) {
+				e = document.createElement(a.output.tagName);
+				e.innerHTML = a.matchText;
+				e = e.firstChild;
+				if(this.voids.indexOf(tn.toLowerCase()) == -1) {
+					a.subWikify(e, "<" + bs + "/" + bs + "s*" + tn + bs + "s*>");
+				}
+				a.output.appendChild(e);
+			}
+		}
+	});
+}());
+
+::breakkkk [script]
+(function(){
+var bs = String.fromCharCode(92);
+Wikifier.formatters.unshift({
+    name: "continuedLine",
+    match: bs+bs+"s",
+    handler: function(a) {
+        a.nextMatch = a.matchStart+3;
+    }
+});
+}());
+
+::sound [script]
+(function () {
+  "use strict";
+  version.extensions['soundMacros'] = {
+    major: 1,
+    minor: 1,
+    revision: 2
+  };
+  var p = macros['playsound'] = {
+    soundtracks: {},
+    handler: function (a, b, c, d) {
+      var loop = function (m) {
+          if (m.loop == undefined) {
+            m.loopfn = function () {
+              this.play();
+            };
+            m.addEventListener('ended', m.loopfn, 0);
+          } else m.loop = true;
+          m.play();
+          };
+      var s = eval(d.fullArgs());
+      if (s) {
+        s = s.toString();
+        var m = this.soundtracks[s.slice(0, s.lastIndexOf("."))];
+        if (m) {
+          if (b == "playsound") {
+            m.play();
+          } else if (b == "loopsound") {
+            loop(m);
+          } else if (b == "pausesound") {
+            m.pause();
+          } else if (b == "unloopsound") {
+            if (m.loop != undefined) {
+              m.loop = false;
+            } else if (m.loopfn) {
+              m.removeEventListener('ended', m.loopfn);
+              delete m.loopfn;
+            }
+          } else if (b == "stopsound") {
+            m.pause();
+            m.currentTime = 0;
+          } else if (b == "fadeoutsound" || b == "fadeinsound") {
+            if (m.interval) clearInterval(m.interval);
+            if (b == "fadeinsound") {
+              if (m.currentTime>0) return;
+              m.volume = 0;
+              loop(m);
+            } else {
+              if (!m.currentTime) return;
+              m.play();
+            }
+            var v = m.volume;
+            m.interval = setInterval(function () {
+              v = Math.min(1, Math.max(0, v + 0.005 * (b == "fadeinsound" ? 1 : -1)));
+              m.volume = Math.easeInOut(v);
+              if (v == 0 || v == 1) clearInterval(m.interval);
+              if (v == 0) {
+                m.pause();
+                m.currentTime = 0;
+                m.volume = 1;
+              }
+            }, 10);
+          }
+        }
+      }
+    }
+  }
+  macros['fadeinsound'] = p;
+  macros['fadeoutsound'] = p;
+  macros['unloopsound'] = p;
+  macros['loopsound'] = p;
+  macros['pausesound'] = p;
+  macros['stopsound'] = p;
+  macros['stopallsound'] = {
+    handler: function () {
+      var s = macros.playsound.soundtracks;
+      for (var j in s) {
+		if (s.hasOwnProperty(j)) {
+          s[j].pause();
+          if (s[j].currentTime) {
+		    s[j].currentTime = 0;
+		  }
+		}
+      }
+    }
+  }
+  var div = document.getElementById("storeArea").firstChild;
+  var fe = ["ogg", "mp3", "wav", "webm"];
+  while (div) {
+    var b = String.fromCharCode(92);
+    var q = '"';
+    var re = "['" + q + "]([^" + q + "']*?)" + b + ".(ogg|mp3|wav|webm)['" + q + "]";
+    k(new RegExp(re, "gi"));
+    div = div.nextSibling;
+  }
+
+  function k(c, e) {
+    do {
+      var d = c.exec(div.innerHTML);
+      if (d) {
+        var a = new Audio();
+        if (a.canPlayType) {
+          for (var i = -1; i < fe.length; i += 1) {
+            if (i >= 0) d[2] = fe[i];
+            if (a.canPlayType("audio/" + d[2])) break;
+          }
+          if (i < fe.length) {
+            a.setAttribute("src", d[1] + "." + d[2]);
+            a.interval = null;
+            macros.playsound.soundtracks[d[1]] = a;
+          } else console.log("Browser can't play '" + d[1] + "'");
+        }
+      }
+    } while (d);
+  }
+}());
+
+

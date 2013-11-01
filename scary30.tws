@@ -1,0 +1,189 @@
+::Start
+<<display setup>>
+
+::StoryTitle
+A Classic Puzzle
+
+::StoryAuthor
+Murph
+
+::setup
+<<set $boat = "left shore"; $goatman = "in the boat"; $werewolf = "left shore"; $straw = "left shore"; $isEmpty = "false" ; $dumb = 2>>
+
+You find yourself in the company of an animated evil scarecrow, a goatman, and werewolf. 
+
+You have a small boat, which you need to cross a river. 
+
+The boat is so small it can only hold you and one other thing at a time.
+
+However.
+
+If the goatman is left with the animated scarecrow, the goatman will eat the straw.
+
+If the werewof is left with the goatman, the werewolf will devour him.
+
+<<display situation>>
+
+::situation
+
+The boat is on the <<print $boat>>
+
+The animated evil scarecrow is <<print $straw>>
+
+The goatman is <<print $goatman>>
+
+The werewolf is <<print $werewolf>>
+
+[[Go to the opposite shore]]
+<<if $isEmpty eq "false">>
+[[Empty the boat]]
+<<endif>>
+<<if $boat eq $straw>>
+<<if $isEmpty eq "true">>
+[[Put the scarecrow in the boat]]
+<<endif>>
+<<endif>>
+<<if $boat eq $goatman>>
+<<if $isEmpty eq "true">>
+[[Put the goatman in the boat]]
+<<endif>>
+<<endif>>
+<<if $boat eq $werewolf>>
+<<if $isEmpty eq "true">>
+[[Put the werewolf in the boat]]
+<<endif>>
+<<endif>>
+
+::Go to the opposite shore
+<<if $boat eq "left shore">>
+<<set $boat = "right shore">>
+<<else>>
+<<set $boat = "left shore">>
+<<endif>>
+<<display resolve>>
+
+::Put the scarecrow in the boat
+<<if $isEmpty eq "true">>
+You put the scarecrow in the boat
+<<set $straw = "in the boat"; $isEmpty = "false">>
+<<else>>
+The boat is already full!
+<<endif>>
+<<display resolve>>
+
+::Put the goatman in the boat
+<<if $isEmpty eq "true">>
+You put the goatman in the boat
+<<set $goatman = "in the boat"; $isEmpty = "false">>
+<<else>>
+The boat is already full!
+<<endif>>
+<<display resolve>>
+
+::Put the werewolf in the boat
+<<if $isEmpty eq "true">>
+You put the werewolf in the boat
+<<set $werewolf = "in the boat"; $isEmpty = "false">>
+<<else>>
+The boat is already full!
+<<endif>>
+<<display resolve>>
+
+
+::Empty the boat
+<<if $isEmpty eq "false">>
+   <<if $goatman eq "in the boat">>
+      <<set $goatman = $boat; $isEmpty = "true">>
+      You take out the goatman.
+   <<endif>>   
+      
+   <<if $werewolf eq "in the boat">>
+      <<set $werewolf = $boat; $isEmpty = "true">>
+      You take out the werewolf
+      <<endif>>
+   <<if $straw eq "in the boat">>
+      <<set $straw = $boat; $isEmpty = "true">>
+      You take out the scarecrow
+   <<endif>>
+<<endif>>
+<<display resolve>>
+
+::resolve
+   <<if $goatman eq "right shore">>
+         <<if $werewolf eq "right shore">>
+            <<if $straw eq "right shore">>
+               <<set $dumb = 1>>
+               <<display ball>>
+            <<endif>>
+         <<endif>>
+   <<endif>>   
+   
+   <<if $goatman eq "left shore" >>
+         <<if $werewolf eq "left shore">>
+            <<if $straw eq "left shore">>
+       The three monsters begin to fight!!
+      <<set $dumb = 1>>
+      [[Get the hell out of here]]
+      
+            <<endif>>
+         <<endif>>
+    <<endif>>     
+
+   
+   <<if $dumb eq 2>>
+      <<if $goatman eq $straw>>
+         <<if $boat neq $goatman>>
+         <<set $dumb = 1>>
+            <<display goatStraw>>
+       <<endif>>
+      <<else if $goatman eq $werewolf>>
+         <<if $boat neq $werewolf>>
+            <<display weregoat>>
+            <<set $dumb = 1>>
+         <<endif>>
+   <<endif>>
+   <<endif>>
+   
+   <<if $dumb eq 2>>
+    <<display situation>>
+   <<endif>>
+
+::goatStraw
+The goatman alone with the scarecrow, chews him mercilessly.  Now alone with the werewolf, you are bitten, mauled and generally manhandled. 
+
+BAD ENDING
+
+::weregoat
+The werewolf chomps down on the goatman like a wolf on a goat.  The scarecrow, seeing his oppertunity, flips you the crow and pushes you out of the boat.
+
+BAD ENDING
+
+::ball
+The monsters, no longer in need of your services, beat the crap out of you, take your lunch money and sink your boat.  
+
+BAD ENDING
+
+
+
+::Get the hell out of here
+You are able to sneak away from those horrible monsters!!!  Thank goodness
+
+GOOD ENDING
+
+
+::ifelll [script]
+version.extensions.ifMacros={major:2,minor:0,revision:0};macros["if"]={handler:function(place,macroName,params,parser){
+var conditions=[],clauses=[],srcOffset=parser.source.indexOf(">>",parser.matchStart)+2,src=parser.source.slice(srcOffset),endPos=-1,currentCond=parser.fullArgs(),currentClause="",t=0,nesting=0;
+for(var i=0;i<src.length;i++){if(src.substr(i,9)=="<<endif>>"){nesting--;if(nesting<0){endPos=srcOffset+i+9;
+conditions.push(currentCond);clauses.push(currentClause);break;}}if((src.substr(i,6)=="<<else")&&nesting==0){conditions.push(currentCond);
+clauses.push(currentClause);currentClause="";t=src.indexOf(">>",i+6);if(src.substr(i+6,4)==" if "){currentCond=Wikifier.parse(src.slice(i+10,t));
+}else{currentCond="true";}i=t+2;}if(src.substr(i,5)=="<<if "){nesting++;}currentClause+=src.charAt(i);
+}try{if(endPos!=-1){parser.nextMatch=endPos;for(i=0;i<clauses.length;i++){if(eval(conditions.shift())){new Wikifier(place,clauses[i ].trim());
+break;}}}else{throwError(place,"can't find matching endif");}}catch(e){throwError(place,"bad condition: "+e.message);
+}}};
+
+
+
+
+
+

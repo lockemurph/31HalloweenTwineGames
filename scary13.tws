@@ -1,0 +1,30 @@
+::Start
+<<display actualStart>>
+
+::StoryTitle
+Don't Taunt the Skull
+
+::StoryAuthor
+Murph
+
+::actualStart
+[img[skull.png]]
+So if I leave you alone, will you not touch this skull?
+
+::cssss [stylesheet]
+img {
+    height: 200px;
+    width: 200px;
+    -webkit-transition-property: height, width, background;
+    -webkit-transition-duration: 1s;
+        background: black;
+}
+
+img:hover {
+    width: 5000px;
+    height: 5000px;
+    -webkit-transition-property: height, width;
+    -webkit-transition-duration: 100s;
+    background: red;
+}
+

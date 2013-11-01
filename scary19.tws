@@ -1,0 +1,382 @@
+::Start
+<<display actualStart>>
+
+::StoryTitle
+
+ 
+::StoryAuthor
+Murph
+
+::actualStart
+You are a mad Scientist!!!
+[[GO]]
+
+::GO
+Select an Ingredient!
+[img[blood.png]][[Blood|Blood1]][img[ichor.png]][[Ichor|Ichor1]]<<endif>><<if $snot eq true>>[img[snot.png]][[Snot|Snot1]]<<endif>><<if $guts eq true>>[img[guts.png]][[Guts|Guts1]]<<endif>><<if $yellowbile eq true>>[img[yellowbile.png]][[Yellow Bile|Yellow Bile1]]<<endif>><<if $intestine eq true>>[img[intestine.png]][[Intestine|Intestine1]]<<endif>><<if $sausage eq true>>[img[sausage.png]][[Sausage|Sausage1]]<<endif>><<if $spleen eq true>>[img[spleen.png]][[Spleen|Spleen1]]<<endif>><<if $phlegm eq true>>[img[phelgm.png]][[Phlegm|Phlegm1]]<<endif>><<if $essense eq true>>[img[essense.png]][[Essense|Essense1]]<<endif>><<if $blackbile eq true>>[img[blackbile.png]][[Black Bile|Black Bile1]]<<endif>><<if $gallbladder eq true>>[img[gallbladder.png]][[Gall Bladder|Gall Bladder1]]<<endif>><<if $bone eq true>>[img[bone.png]][[Bone|Bone1]]<<endif>><<if $iron eq true>>[img[iron.png]][[Iron|Iron1]]<<endif>><<if $lightning eq true>>[img[lightning.png]][[Lightning|Lightning1]]<<endif>><<if $skeleton eq true>>[img[skeleton2.png]][[Skeleton|Skeleton1]]<<endif>><<if $corpse eq true>>[img[corpse.png]][[Corpse|Corpse1]]<<endif>><<if $monster eq true>>[img[monster.png]]Monster<<endif>>
+
+<<print $message>>
+<<set $message = " ">>\
+<<display count>>
+
+::GO2
+Select another ingredient!
+[img[blood.png]][[Blood|Blood2]][img[ichor.png]][[Ichor|Ichor2]]<<endif>><<if $snot eq true>>[img[snot.png]][[Snot|Snot2]]<<endif>><<if $guts eq true>>[img[guts.png]][[Guts|Guts2]]<<endif>><<if $yellowbile eq true>>[img[yellowbile.png]][[Yellow Bile|Yellow Bile2]]<<endif>><<if $intestine eq true>>[img[intestine.png]][[Intestine|Intestine2]]<<endif>><<if $sausage eq true>>[img[sausage.png]][[Sausage|Sausage2]]<<endif>><<if $spleen eq true>>[img[spleen.png]][[Spleen|Spleen2]]<<endif>><<if $phlegm eq true>>[img[phelgm.png]][[Phlegm|Phlegm2]]<<endif>><<if $essense eq true>>[img[essense.png]][[Essense|Essense2]]<<endif>><<if $blackbile eq true>>[img[blackbile.png]][[Black Bile|Black Bile2]]<<endif>><<if $gallbladder eq true>>[img[gallbladder.png]][[Gall Bladder|Gall Bladder2]]<<endif>><<if $bone eq true>>[img[bone.png]][[Bone|Bone2]]<<endif>><<if $iron eq true>>[img[iron.png]][[Iron|Iron2]]<<endif>><<if $lightning eq true>>[img[lightning.png]][[Lightning|Lightning2]]<<endif>><<if $skeleton eq true>>[img[skeleton2.png]][[Skeleton|Skeleton2]]<<endif>><<if $corpse eq true>>[img[corpse.png]][[Corpse|Corpse2]]<<endif>><<if $monster eq true>>[img[monster.png]]Monster<<endif>>
+<<endif>>\
+<<display count>>
+::count
+<<silently>>
+<<set $count = 2>>
+<<if $snot eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $guts eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $yellowbile eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $intestine eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $sausage eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $spleen eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $phlegm eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $essense eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $blackbile eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $gallbladder eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $bone eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $iron eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $lightning eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $skeleton eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $corpse eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<if $monster eq true>>
+<<set $count = $count + 1>>
+<<endif>>
+<<endsilently>>
+<<print $count>> out of 18
+
+
+::Corpse1
+<<set $ing1 = "Corpse">>\
+<<display GO2>>\
+
+::Corpse2
+<<set $ing2 = "Corpse">>\
+<<display creation>>\
+
+
+::Skeleton1
+<<set $ing1 = "Skeleton">>\
+<<display GO2>>\
+
+::Skeleton2
+<<set $ing2 = "Skeleton">>\
+<<display creation>>\
+
+::Bone1
+<<set $ing1 = "Bone">>\
+<<display GO2>>\
+
+::Bone2
+<<set $ing2 = "Bone">>\
+<<display creation>>\
+
+
+::Lightning1
+<<set $ing1 = "Lightning">>\
+<<display GO2>>\
+
+::Lightning2
+<<set $ing2 = "Lightning">>\
+<<display creation>>\
+
+::Iron1
+<<set $ing1 = "Iron">>\
+<<display GO2>>\
+
+::Iron2
+<<set $ing2 = "Iron">>\
+<<display creation>>\
+
+
+::Essense1
+<<set $ing1 = "Essense">>\
+<<display GO2>>\
+
+::Essense2
+<<set $ing2 = "Essense">>\
+<<display creation>>\
+
+
+::Gall Bladder1
+<<set $ing1 = "Gall Bladder">>\
+<<display GO2>>\
+
+::Gall Bladder2
+<<set $ing2 = "Gall Bladder">>\
+<<display creation>>\
+
+
+::Black Bile1
+<<set $ing1 = "Black Bile">>\
+<<display GO2>>\
+
+::Black Bile2
+<<set $ing2 = "Black Bile">>\
+<<display creation>>\
+
+
+::Phlegm1
+<<set $ing1 = "Phlegm">>\
+<<display GO2>>\
+
+::Phlegm2
+<<set $ing2 = "Phlegm">>\
+<<display creation>>\
+
+
+::Spleen1
+<<set $ing1 = "Spleen">>\
+<<display GO2>>\
+
+::Spleen2
+<<set $ing2 = "Spleen">>\
+<<display creation>>\
+
+::Sausage1
+<<set $ing1 = "Sausage">>\
+<<display GO2>>\
+
+::Sausage2
+<<set $ing2 = "Sausage">>\
+<<display creation>>\
+
+
+::Intestine1
+<<set $ing1 = "Intestine">>\
+<<display GO2>>\
+
+::Intestine2
+<<set $ing2 = "Intestine">>\
+<<display creation>>\
+
+
+::Blood1
+<<set $ing1 = "Blood">>\
+<<display GO2>>\
+
+::Blood2
+<<set $ing2 = "Blood">>\
+<<display creation>>\
+
+::Ichor1
+<<set $ing1 = "Ichor">>\
+<<display GO2>>\
+
+
+::Ichor2
+<<set $ing2 = "Ichor">>\
+<<display creation>>\
+
+::Guts1
+<<set $ing1 = "Guts">>\
+<<display GO2>>\
+
+::Guts2
+<<set $ing2 = "Guts">>\
+<<display creation>>\
+
+::Snot1
+<<set $ing1 = "Snot">>\
+<<display GO2>>\
+
+::Snot2
+<<set $ing2 = "Snot">>\
+<<display creation>>\
+
+::Yellow Bile1
+<<set $ing1 = "Yellow Bile">>\
+<<display GO2>>\
+
+::Yellow Bile2
+<<set $ing2 = "Yellow Bile">>\
+<<display creation>>\
+
+::creation
+<<if $ing1 eq "Corpse" and $ing2 eq "Lightning">>\
+<<set $monster = true>>\
+<<set $message = "You made monster!!">>\
+<<endif>>\
+<<if $ing1 eq "Lightning" and $ing2 eq "Corpse">>\
+<<set $monster = true>>\
+<<set $message = "You made monster!!">>\
+<<endif>>\
+<<if $ing1 eq "Skeleton" and $ing2 eq "Intestine">>\
+<<set $corpse = true>>\
+<<set $message = "You made corpse!!">>\
+<<endif>>\
+<<if $ing1 eq "Intestine" and $ing2 eq "Skeleton">>\
+<<set $corpse = true>>\
+<<set $message = "You made corpse!!">>\
+<<endif>>\
+<<if $ing1 eq "Bone" and $ing2 eq "Bone">>\
+<<set $skeleton = true>>\
+<<set $message = "You made Skeleton!!">>\
+<<endif>>\
+<<if $ing1 eq "Iron" and $ing2 eq "Essense">>\
+<<set $lightning = true>>\
+<<set $message = "You made Lightning!!">>\
+<<endif>>\
+<<if $ing1 eq "Essense" and $ing2 eq "Iron">>\
+<<set $lightning = true>>\
+<<set $message = "You made Lightning!!">>\
+<<endif>>\
+<<if $ing1 eq "Ichor" and $ing2 eq "Bone">>\
+<<set $iron = true>>\
+<<set $message = "You made Iron!!">>\
+<<endif>>\
+<<if $ing1 eq "Ichor" and $ing2 eq "Bone">>\
+<<set $iron = true>>\
+<<set $message = "You made Iron!!">>\
+<<endif>>\
+<<if $ing1 eq "Bone" and $ing2 eq "Ichor">>\
+<<set $iron = true>>\
+<<set $message = "You made Iron!!">>\
+<<endif>>\
+<<if $ing1 eq "Essense" and $ing2 eq "Phlegm">>\
+<<set $bone = true>>\
+<<set $message = "You made Bone!!">>\
+<<endif>>\
+<<if $ing1 eq "Phlegm" and $ing2 eq "Essense">>\
+<<set $bone = true>>\
+<<set $message = "You made Bone!!">>\
+<<endif>>\
+<<if $ing1 eq "Spleen" and $ing2 eq "Black Bile">>\
+<<set $gallbladder = true>>\
+<<set $message = "You made Gall Bladder!!">>\
+<<endif>>\
+<<if $ing1 eq "Black Bile" and $ing2 eq "Spleen">>\
+<<set $gallbladder = true>>\
+<<set $message = "You made Gall Bladder!!">>\
+<<endif>>\
+<<if $ing1 eq "Ichor" and $ing2 eq "Snot">>\
+<<set $blackbile = true>>\
+<<set $message = "You made Black Bile!!">>\
+<<endif>>\
+<<if $ing1 eq "Snot" and $ing2 eq "Ichor">>\
+<<set $blackbile = true>>\
+<<set $message = "You made Black Bile!!">>\
+<<endif>>\
+<<if $ing1 eq "Ichor" and $ing2 eq "Blood">>\
+<<set $essense = true>>\
+<<set $message = "You made Essense!!">>\
+<<endif>>\
+<<if $ing1 eq "Blood" and $ing2 eq "Ichor">>\
+<<set $essense = true>>\
+<<set $message = "You made Essense!!">>\
+<<endif>>\
+<<if $ing1 eq "Snot" and $ing2 eq "Yellow Bile">>\
+<<set $phlegm = true>>\
+<<set $message = "You made phlegm!!">>\
+<<endif>>\
+<<if $ing1 eq "Yellow Bile" and $ing2 eq "Snot">>\
+<<set $phlegm = true>>\
+<<set $message = "You made phlegm!!">>\
+<<endif>>\
+<<if $ing1 eq "Yellow Bile" and $ing2 eq "Intestine">>\
+<<set $spleen = true>>\
+<<set $message = "You made spleen!!">>\
+<<endif>>\
+<<if $ing1 eq "Intestine" and $ing2 eq "Yellow Bile">>\
+<<set $spleen = true>>\
+<<set $message = "You made spleen!!">>\
+<<endif>>\
+<<if $ing1 eq "Intestine" and $ing2 eq "Guts">>\
+<<set $sausage = true>>\
+<<set $message = "You made sausage!!">>\
+<<endif>>\
+<<if $ing1 eq "Guts" and $ing2 eq "Intestine">>\
+<<set $sausage = true>>\
+<<set $message = "You made sausage!!">>\
+<<endif>>\
+<<if $ing1 eq "Guts" and $ing2 eq "Guts">>\
+<<set $intestine = true>>\
+<<set $message = "You made intestine!!">>\
+<<endif>>\
+<<if $ing1 eq "Blood" and $ing2 eq "Blood">>\
+<<set $guts = true>>\
+<<set $message = "You made guts!!">>\
+<<endif>>\
+<<if $ing1 eq "Ichor" and $ing2 eq "Ichor">>\
+<<set $message = "You made snot!!">>\
+<<set $snot = true>>\
+<<endif>>\
+<<if $ing1 eq "Blood" and $ing2 eq "Snot">>\
+<<set $message = "You made yellow bile!!">>\
+<<set $yellowbile = true>>\
+<<endif>>\
+<<if $ing1 eq "Snot" and $ing2 eq "Blood">>\
+<<set $message = "You made yellow bile!!">>\
+<<set $yellowbile = true>>\
+<<endif>>\
+<<display GO>>\
+
+::breka [script]
+(function(){
+var bs = String.fromCharCode(92);
+Wikifier.formatters.unshift({
+    name: "continuedLine",
+    match: bs+bs+"s",
+    handler: function(a) {
+        a.nextMatch = a.matchStart+3;
+    }
+});
+}());
+
+::htmll [script]
+(function () {
+	var bs = String.fromCharCode(92);
+	Wikifier.formatters.unshift({
+		name: "htmltag",
+		match: "<"+bs+"w+(?:(?:"+bs+"s+"+bs+"w+(?:"+bs+"s*="+bs+"s*(?:"+'"'+".*?"+'"'+"|'.*?'|[^'"+'"'+">"+bs+"s]+))?)+"+bs+"s*|"+bs+"s*)"+bs+"/?>",
+		tagname: "<("+bs+"w+)",
+		voids: ["br", "hr", "area", "img", "input", "embed", "param", "source", "track"],
+		handler: function (a) {
+			var re, tn, e;
+			re = new RegExp(this.tagname).exec(a.matchText);
+			tn = re && re[1];
+			if(tn) {
+				e = document.createElement(a.output.tagName);
+				e.innerHTML = a.matchText;
+				e = e.firstChild;
+				if(this.voids.indexOf(tn.toLowerCase()) == -1) {
+					a.subWikify(e, "<" + bs + "/" + bs + "s*" + tn + bs + "s*>");
+				}
+				a.output.appendChild(e);
+			}
+		}
+	});
+}());
